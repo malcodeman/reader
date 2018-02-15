@@ -5,6 +5,15 @@ import Header from "./components/Header";
 import styled from "styled-components";
 import { color } from "styles/constants";
 
+const Main = styled.main`
+  grid-area: m;
+  background-color: transparent;
+  overflow-y: scroll;
+  @media (min-width: 576px) {
+    padding: 2rem;
+  }
+`;
+
 const Loading = styled.span`
   padding: 1rem;
   color: ${color.secondary};
@@ -24,7 +33,7 @@ const ListeItem = styled.li`
   }
 `;
 
-class NewsContainer extends Component {
+class News extends Component {
   state = {
     posts: [],
     loadingPosts: true
@@ -39,7 +48,7 @@ class NewsContainer extends Component {
   };
   render() {
     return (
-      <React.Fragment>
+      <Main>
         <Header title="Reddit" />
         {this.state.loadingPosts ? (
           <Loading>Loading...</Loading>
@@ -58,9 +67,9 @@ class NewsContainer extends Component {
             ))}
           </List>
         )}
-      </React.Fragment>
+      </Main>
     );
   }
 }
 
-export default NewsContainer;
+export default News;

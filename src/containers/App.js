@@ -1,19 +1,25 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import NewsContainer from "./NewsContainer";
+import News from "./News";
+import Navigation from "./Navigation";
 
-const Main = styled.main`
+const Grid = styled.section`
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-areas: "n n n n n n n n n n n n" "m m m m m m m m m m m m";
+  height: 100vh;
   @media (min-width: 576px) {
-    padding: 2rem;
+    grid-template-areas: "n n m m m m m m m m m m";
   }
 `;
 
 class App extends Component {
   render() {
     return (
-      <Main>
-        <NewsContainer />
-      </Main>
+      <Grid>
+        <Navigation />
+        <News />
+      </Grid>
     );
   }
 }
