@@ -15,6 +15,7 @@ const Title = styled.p`
 
 const common = `
   font-size: 0.8rem;
+  line-height: 1.4;
   color: ${color.secondary};
   display: block;
   @media (min-width: 576px) {

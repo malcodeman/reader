@@ -32,9 +32,9 @@ class NewsContainer extends Component {
   componentDidMount = () => {
     axios
       .get("https://www.reddit.com/r/popular.json")
-      .then(res => {
-        this.setState({ posts: res.data.data.children, loadingPosts: false });
-      })
+      .then(res =>
+        this.setState({ posts: res.data.data.children, loadingPosts: false })
+      )
       .catch(err => console.log(err));
   };
   render() {
