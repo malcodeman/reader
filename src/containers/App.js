@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import NewsContainer from "./NewsContainer";
 
-const Main = styled.main`  
-  background-color: #fff;
-  @media(min-width: 576px) {
+const Main = styled.main`
+  @media (min-width: 576px) {
     padding: 2rem;
   }
 `;
