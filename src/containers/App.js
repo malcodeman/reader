@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import Header from "../components/Header";
 import NewsContainer from "./NewsContainer";
 
-const Main = styled.main`
-  padding: 4em;
-  background: papayawhip;
+const Main = styled.main`  
+  background-color: #fff;
+  @media(min-width: 576px) {
+    padding: 2rem;
+  }
 `;
 
 class App extends Component {
   render() {
     return (
       <Main>
-        <Header title="Reddit" />
         <NewsContainer />
       </Main>
     );
