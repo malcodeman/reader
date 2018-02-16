@@ -6,6 +6,10 @@ const Title = styled.h1`
   padding: 1rem;
   margin: 0;
   color: ${color.primary};
+  display: none;
+  @media (min-width: 576px) {
+    display: block;
+  }
 `;
 
 const Header = props => (

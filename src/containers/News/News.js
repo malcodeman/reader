@@ -1,23 +1,23 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Post from "./components/Post";
-import Header from "./components/Header";
 import styled from "styled-components";
+import Post from "./components/Post/Post";
+import Header from "./components/Header/Header";
 import { color } from "styles/constants";
 
-const Main = styled.main`
+const NewsArea = styled.main`
   grid-area: m;
   background-color: transparent;
-  overflow-y: scroll;
   @media (min-width: 576px) {
     padding: 2rem;
+    overflow-y: scroll;
   }
 `;
 
 const Loading = styled.span`
   padding: 1rem;
   color: ${color.secondary};
-  text-align: center;
+  display: block;
 `;
 
 const List = styled.ul`
@@ -48,7 +48,7 @@ class News extends Component {
   };
   render() {
     return (
-      <Main>
+      <NewsArea>
         <Header title="Reddit" />
         {this.state.loadingPosts ? (
           <Loading>Loading...</Loading>
@@ -67,7 +67,7 @@ class News extends Component {
             ))}
           </List>
         )}
-      </Main>
+      </NewsArea>
     );
   }
 }
