@@ -4,6 +4,7 @@ import Post from "./components/Post/Post";
 import Header from "./components/Header/Header";
 import { color } from "styles/constants";
 import reddit from "services/reddit";
+import { getBestStories, getItem } from "services/hackerNews";
 
 const NewsArea = styled.main`
   grid-area: m;
@@ -39,9 +40,37 @@ class News extends Component {
     loadingPosts: true
   };
   componentDidMount = () => {
-    reddit()
-      .then(res => this.setState({ posts: res, loadingPosts: false }))
-      .catch(err => console.log(err));
+    let postsArray = [];
+    /*reddit()
+      .then(res => {
+        res.forEach(element => {
+          let temp = {
+            id: element.data.id, 
+            title: element.data.title 
+          };
+          postsArray.push(temp);          
+          this.setState({ posts: postsArray, loadingPosts: false });
+        });
+      })*/
+    //this.setState({ posts: postsArray, loadingPosts: false });
+
+    /*getBestStories().then(res => {
+      res.slice(0, 25).forEach(element => {
+        getItem(element).then(res => {
+          console.log(res)
+          let temp = {
+            id: res.id, 
+            title: res.title ,
+            url: res.url ,
+            upvotes: res.score,
+            author: res.by,
+            comments: res.descendants
+          };
+          postsArray.push(temp);          
+          this.setState({ posts: postsArray, loadingPosts: false });
+        });
+      });
+    });*/
   };
   render() {
     return (
@@ -52,13 +81,13 @@ class News extends Component {
         ) : (
           <List>
             {this.state.posts.map(post => (
-              <ListeItem key={post.data.id}>
+              <ListeItem key={post.id}>
                 <Post
-                  url={post.data.url}
-                  title={post.data.title}
-                  upvotes={post.data.ups}
-                  author={post.data.author}
-                  comments={post.data.num_comments}
+                  url={post.url}
+                  title={post.title}
+                  upvotes={post.upvotes}
+                  author={post.author}
+                  comments={post.comments}
                 />
               </ListeItem>
             ))}
