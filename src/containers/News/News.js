@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import axios from "axios";
 import styled from "styled-components";
 import Post from "./components/Post/Post";
 import Header from "./components/Header/Header";
 import { color } from "styles/constants";
+import reddit from "services/reddit";
 
 const NewsArea = styled.main`
   grid-area: m;
@@ -39,11 +39,8 @@ class News extends Component {
     loadingPosts: true
   };
   componentDidMount = () => {
-    axios
-      .get("https://www.reddit.com/r/popular.json")
-      .then(res =>
-        this.setState({ posts: res.data.data.children, loadingPosts: false })
-      )
+    reddit()
+      .then(res => this.setState({ posts: res, loadingPosts: false }))
       .catch(err => console.log(err));
   };
   render() {
