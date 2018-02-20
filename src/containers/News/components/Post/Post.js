@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { color } from "styles/constants";
+import { color } from "../../../../styles/constants";
 
 const Link = styled.a`
   text-decoration: none;
