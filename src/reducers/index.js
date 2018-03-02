@@ -7,11 +7,18 @@ const initialState = {
 };
 
 const activeLink = (state = initialState, action) => {
+  console.log(action);
   switch (action.type) {
     case "CHANGE_ACTIVE_LINK":
       return {
         ...state,
         active: action.payload
+      };
+    case "RECIVE_POSTS":
+      return {
+        ...state,
+        loading: false,
+        posts: action.payload
       };
     default:
       return state;

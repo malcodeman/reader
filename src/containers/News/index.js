@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import Post from "./components/Post/Post";
 import Header from "./components/Header/Header";
 import { color } from "../../styles/constants";
+import { requestPosts } from "../../actions";
 
 const NewsArea = styled.main`
   grid-area: m;
@@ -80,14 +81,14 @@ class News extends Component {
           <Loading>Loading...</Loading>
         ) : (
           <List>
-            {this.state.posts.map(post => (
+            {this.props.posts.map(post => (
               <ListeItem key={post.id}>
                 <Post
-                  url={post.url}
-                  title={post.title}
-                  upvotes={post.upvotes}
-                  author={post.author}
-                  comments={post.comments}
+                  url={post.url || post.data.url}
+                  title={post.title || post.data.title}
+                  upvotes={post.upvotes || post.data.score}
+                  author={post.author || post.data.author}
+                  comments={post.comments || post.data.num_comments}
                 />
               </ListeItem>
             ))}
@@ -99,12 +100,18 @@ class News extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
     active: state.activeLink,
     title: state.activeLink.active,
-    loading: state.activeLink.loading
+    loading: state.activeLink.loading,
+    posts: state.activeLink.posts
   };
 };
 
-export default connect(mapStateToProps)(News);
+const mapDispatchToProps = dispatch => {
+  return {
+    requestPosts: () => dispatch(requestPosts())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(News);
