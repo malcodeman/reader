@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { connect } from "react-redux";
 
+import { changeActiveLink } from "../actions";
 import { color } from "../styles/constants";
 
 const Nav = styled.nav`
@@ -29,11 +31,17 @@ class Navigation extends Component {
   render() {
     return (
       <Nav>
-        <Link>Reddit</Link>
-        <Link>HN</Link>
+        <Link onClick={() => this.props.changeActiveLink("reddit")}>Reddit</Link>
+        <Link onClick={() => this.props.changeActiveLink("hacker_news")}>HN</Link>
       </Nav>
     );
   }
 }
 
-export default Navigation;
+const mapDispatchToProps = dispatch => {
+  return{
+    changeActiveLink: (link) => dispatch(changeActiveLink(link))
+  }
+};
+
+export default connect(null, mapDispatchToProps)(Navigation);
