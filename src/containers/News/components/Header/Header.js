@@ -7,6 +7,7 @@ const Title = styled.h1`
   margin: 0;
   color: ${color.primary};
   display: none;
+  text-transform: capitalize;
   @media (min-width: 576px) {
     display: block;
   }

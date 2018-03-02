@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
-import News from "./News/News";
-import Navigation from "./Navigation/Navigation";
+import News from "../containers/News";
+import Navigation from "../containers/Navigation";
 
 const Grid = styled.section`
   display: grid;
@@ -13,15 +13,13 @@ const Grid = styled.section`
   }
 `;
 
-class App extends Component {
-  render() {
-    return (
-      <Grid>
-        <Navigation />
-        <News />
-      </Grid>
-    );
-  }
-}
+const App = props => {
+  return (
+    <Grid>
+      <Navigation />
+      <News />
+    </Grid>
+  );
+};
 
 export default App;

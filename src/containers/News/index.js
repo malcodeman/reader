@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { connect } from "react-redux";
+
 import Post from "./components/Post/Post";
 import Header from "./components/Header/Header";
 import { color } from "../../styles/constants";
-import reddit from "../../services/reddit";
-import { getBestStories, getItem } from "../../services/hackerNews";
 
 const NewsArea = styled.main`
   grid-area: m;
@@ -35,13 +35,9 @@ const ListeItem = styled.li`
 `;
 
 class News extends Component {
-  state = {
-    posts: [],
-    loadingPosts: true
-  };
   componentDidMount = () => {
-    let postsArray = [];
-    /*reddit()
+    /* let postsArray = [];
+    reddit()
       .then(res => {
         res.forEach(element => {
           let temp = {
@@ -57,8 +53,8 @@ class News extends Component {
         });
       })
     //this.setState({ posts: postsArray, loadingPosts: false });
-      */
-    getBestStories().then(res => {
+      
+    /*getBestStories().then(res => {
       res.slice(0, 125).forEach(element => {
         getItem(element).then(res => {
           console.log(res);
@@ -74,13 +70,13 @@ class News extends Component {
           this.setState({ posts: postsArray, loadingPosts: false });
         });
       });
-    });
+    });*/
   };
   render() {
     return (
       <NewsArea>
-        <Header title="Reddit" />
-        {this.state.loadingPosts ? (
+        <Header title={this.props.title} />
+        {this.props.loading ? (
           <Loading>Loading...</Loading>
         ) : (
           <List>
@@ -102,4 +98,13 @@ class News extends Component {
   }
 }
 
-export default News;
+const mapStateToProps = state => {
+  console.log(state)
+  return {
+    active: state.activeLink,
+    title: state.activeLink.active,
+    loading: state.activeLink.loading
+  };
+};
+
+export default connect(mapStateToProps)(News);
