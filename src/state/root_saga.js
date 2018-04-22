@@ -1,7 +1,8 @@
 import { all } from "redux-saga/effects";
 
-import { watchfetchPosts } from "../features/news/sagas/sagas_news";
+import { watchfetchPosts } from "../features/news/sagas/reddit/sagas_news";
+import { watchfetchBestStories } from "../features/news/sagas/hackerNews/sagas_hacker_news";
 
 export default function* rootSaga() {
-  yield all([watchfetchPosts()]);
+  yield all([watchfetchPosts(), watchfetchBestStories()]);
 }

@@ -3,10 +3,8 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 
 import { color } from "../../../state/styles/constants";
-import {
-  requestPosts,
-  changeSource
-} from "../../../features/news/actions/actions_news";
+import { requestPosts, changeSource } from "../../news/actions/actions_news";
+import { requestBestStories } from "../../news/actions/actions_hacker_news";
 
 const Nav = styled.nav`
   grid-area: n;
@@ -41,7 +39,14 @@ class Navigation extends Component {
         >
           Reddit
         </Link>
-        <Link onClick={() => this.props.changeSource("hacker news")}>HN</Link>
+        <Link
+          onClick={() =>
+            this.props.changeSource("hacker news") &&
+            this.props.requestBestStories()
+          }
+        >
+          HN
+        </Link>
       </Nav>
     );
   }
@@ -50,7 +55,8 @@ class Navigation extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     changeSource: link => dispatch(changeSource(link)),
-    requestPosts: () => dispatch(requestPosts())
+    requestPosts: () => dispatch(requestPosts()),
+    requestBestStories: () => dispatch(requestBestStories())
   };
 };
 

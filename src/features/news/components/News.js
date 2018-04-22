@@ -36,6 +36,9 @@ const ListItem = styled.li`
 `;
 
 class News extends Component {
+  componentDidMount = () => {
+    this.props.requestPosts();
+  };
   render() {
     return (
       <NewsArea>
@@ -63,7 +66,6 @@ class News extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state.news.posts)
   return {
     source: state.news.source,
     loading: state.news.loading,

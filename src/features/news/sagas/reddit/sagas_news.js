@@ -4,7 +4,7 @@ import {
   REQUEST_POSTS,
   REQUEST_POSTS_FAILED,
   RECIVE_POSTS
-} from "../actions/actions_news";
+} from "../../actions/actions_news";
 import { getPopularPosts } from "./reddit_api";
 
 function* fetchPosts() {

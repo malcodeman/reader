@@ -5,8 +5,7 @@ export const getBestStories = () => {
     .get("https://hacker-news.firebaseio.com/v0/beststories.json")
     .then(res => {
       return res.data;
-    })
-    .catch(err => console.log(err));
+    });
 };
 
 export const getItem = id => {
@@ -14,6 +13,5 @@ export const getItem = id => {
     .get(`https://hacker-news.firebaseio.com/v0/item/${id}.json`)
     .then(res => {
       return res.data;
-    })
-    .catch(err => console.log(err));
+    });
 };
