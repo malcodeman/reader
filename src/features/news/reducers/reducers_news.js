@@ -18,7 +18,16 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        posts: action.payload
+        posts: action.payload.map((post, index) => {
+          return {
+            id: action.payload[index].data.id,
+            url: action.payload[index].data.url,
+            title: action.payload[index].data.title,
+            upvotes: action.payload[index].data.score,
+            author: action.payload[index].data.author,
+            comments: action.payload[index].data.num_comments
+          };
+        })
       };
     default:
       return state;

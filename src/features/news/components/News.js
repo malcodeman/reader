@@ -28,7 +28,7 @@ const List = styled.ul`
   list-style: none;
 `;
 
-const ListeItem = styled.li`
+const ListItem = styled.li`
   padding: 1rem;
   :hover {
     background-color: #eee;
@@ -36,43 +36,6 @@ const ListeItem = styled.li`
 `;
 
 class News extends Component {
-  componentDidMount = () => {
-    /* let postsArray = [];
-    reddit()
-      .then(res => {
-        res.forEach(element => {
-          let temp = {
-            id: element.data.id, 
-            title: element.data.title,
-            url: element.data.url ,
-            upvotes: element.data.ups,
-            author: element.data.author,
-            comments: element.data.num_comments
-          };
-          postsArray.push(temp);          
-          this.setState({ posts: postsArray, loadingPosts: false });
-        });
-      })
-    //this.setState({ posts: postsArray, loadingPosts: false });
-      
-    /*getBestStories().then(res => {
-      res.slice(0, 125).forEach(element => {
-        getItem(element).then(res => {
-          console.log(res);
-          let temp = {
-            id: res.id,
-            title: res.title,
-            url: res.url,
-            upvotes: res.score,
-            author: res.by,
-            comments: res.descendants
-          };
-          postsArray.push(temp);
-          this.setState({ posts: postsArray, loadingPosts: false });
-        });
-      });
-    });*/
-  };
   render() {
     return (
       <NewsArea>
@@ -82,15 +45,15 @@ class News extends Component {
         ) : (
           <List>
             {this.props.posts.map(post => (
-              <ListeItem key={post.id}>
+              <ListItem key={post.id}>
                 <Post
-                  url={post.url || post.data.url}
-                  title={post.title || post.data.title}
-                  upvotes={post.upvotes || post.data.score}
-                  author={post.author || post.data.author}
-                  comments={post.comments || post.data.num_comments}
+                  url={post.url}
+                  title={post.title}
+                  upvotes={post.upvotes}
+                  author={post.author}
+                  comments={post.comments}
                 />
-              </ListeItem>
+              </ListItem>
             ))}
           </List>
         )}
@@ -100,6 +63,7 @@ class News extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state.news.posts)
   return {
     source: state.news.source,
     loading: state.news.loading,

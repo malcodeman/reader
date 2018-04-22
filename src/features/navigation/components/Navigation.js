@@ -34,9 +34,14 @@ class Navigation extends Component {
   render() {
     return (
       <Nav>
-        <Link onClick={() => this.props.changeSource("reddit")}>Reddit</Link>
-        <Link onClick={() => this.props.changeSource("hacker_news")}>HN</Link>
-        <Link onClick={this.props.requestPosts}>test</Link>
+        <Link
+          onClick={() =>
+            this.props.changeSource("reddit") && this.props.requestPosts()
+          }
+        >
+          Reddit
+        </Link>
+        <Link onClick={() => this.props.changeSource("hacker news")}>HN</Link>
       </Nav>
     );
   }
