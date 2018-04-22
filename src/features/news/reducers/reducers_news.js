@@ -1,20 +1,24 @@
-import { combineReducers } from "redux";
+import {
+  CHANGE_SOURCE,
+  REQUEST_POSTS,
+  RECIVE_POSTS
+} from "../actions/actions_news";
 
 const initialState = {
-  active: "reddit",
+  source: "reddit",
   loading: true,
   posts: ["first", "second"]
 };
 
-const activeLink = (state = initialState, action) => {
+export default (state = initialState, action) => {
   console.log(action);
   switch (action.type) {
-    case "CHANGE_ACTIVE_LINK":
+    case CHANGE_SOURCE:
       return {
         ...state,
-        active: action.payload
+        source: action.payload
       };
-    case "RECIVE_POSTS":
+    case RECIVE_POSTS:
       return {
         ...state,
         loading: false,
@@ -24,7 +28,3 @@ const activeLink = (state = initialState, action) => {
       return state;
   }
 };
-
-const rootReducer = combineReducers({ activeLink });
-
-export default rootReducer;

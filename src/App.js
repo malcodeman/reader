@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import News from "../containers/News";
-import Navigation from "../containers/Navigation";
+import News from "./features/news/components/News";
+import Navigation from "./features/navigation/components/Navigation";
 
 const Grid = styled.section`
   display: grid;

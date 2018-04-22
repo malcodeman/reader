@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { color } from "../../../../styles/constants";
+
+import { color } from "../../../state/styles/constants";
 
 const Title = styled.h1`
   padding: 1rem;

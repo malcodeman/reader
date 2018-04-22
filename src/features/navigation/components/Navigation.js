@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 
-import { changeActiveLink } from "../actions";
-import { color } from "../styles/constants";
-import { requestPosts } from "../actions";
+import { color } from "../../../state/styles/constants";
+import {
+  requestPosts,
+  changeSource
+} from "../../../features/news/actions/actions_news";
 
 const Nav = styled.nav`
   grid-area: n;
@@ -32,15 +34,9 @@ class Navigation extends Component {
   render() {
     return (
       <Nav>
-        <Link onClick={() => this.props.changeActiveLink("reddit")}>
-          Reddit
-        </Link>
-        <Link onClick={() => this.props.changeActiveLink("hacker_news")}>
-          HN
-        </Link>
-        <Link onClick={this.props.requestPosts}>
-          test
-        </Link>
+        <Link onClick={() => this.props.changeSource("reddit")}>Reddit</Link>
+        <Link onClick={() => this.props.changeSource("hacker_news")}>HN</Link>
+        <Link onClick={this.props.requestPosts}>test</Link>
       </Nav>
     );
   }
@@ -48,7 +44,7 @@ class Navigation extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeActiveLink: link => dispatch(changeActiveLink(link)),
+    changeSource: link => dispatch(changeSource(link)),
     requestPosts: () => dispatch(requestPosts())
   };
 };

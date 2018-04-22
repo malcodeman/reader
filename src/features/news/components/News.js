@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 
-import Post from "./components/Post/Post";
-import Header from "./components/Header/Header";
-import { color } from "../../styles/constants";
-import { requestPosts } from "../../actions";
+import Post from "./Post";
+import Header from "./Header";
+import { color } from "../../../state/styles/constants";
+import { requestPosts } from "../actions/actions_news";
 
 const NewsArea = styled.main`
   grid-area: m;
@@ -76,7 +76,7 @@ class News extends Component {
   render() {
     return (
       <NewsArea>
-        <Header title={this.props.title} />
+        <Header title={this.props.source} />
         {this.props.loading ? (
           <Loading>Loading...</Loading>
         ) : (
@@ -101,10 +101,9 @@ class News extends Component {
 
 const mapStateToProps = state => {
   return {
-    active: state.activeLink,
-    title: state.activeLink.active,
-    loading: state.activeLink.loading,
-    posts: state.activeLink.posts
+    source: state.news.source,
+    loading: state.news.loading,
+    posts: state.news.posts
   };
 };
 
