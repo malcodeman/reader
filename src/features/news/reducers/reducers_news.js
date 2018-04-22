@@ -1,13 +1,9 @@
-import {
-  CHANGE_SOURCE,
-  REQUEST_POSTS,
-  RECIVE_POSTS
-} from "../actions/actions_news";
+import { CHANGE_SOURCE, RECIVE_POSTS } from "../actions/actions_news";
 
 const initialState = {
-  source: "reddit",
+  source: "",
   loading: true,
-  posts: ["first", "second"]
+  posts: []
 };
 
 export default (state = initialState, action) => {
