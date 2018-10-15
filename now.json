@@ -1,0 +1,8 @@
+{
+  "name": "reader",
+  "alias": "reader.now.sh",
+  "public": true,
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
