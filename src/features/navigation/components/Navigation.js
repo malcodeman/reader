@@ -28,7 +28,7 @@ const Link = styled.a`
   padding: 1rem;
 `;
 
-class Navigation extends Component {
+export class Navigation extends Component {
   render() {
     return (
       <Nav>
@@ -60,4 +60,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(Navigation);
+export default connect(
+  null,
+  mapDispatchToProps
+)(Navigation);

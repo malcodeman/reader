@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navigation snapshot 1`] = `
+<styled.nav>
+  <styled.a
+    onClick={[Function]}
+  >
+    Reddit
+  </styled.a>
+  <styled.a
+    onClick={[Function]}
+  >
+    HN
+  </styled.a>
+</styled.nav>
+`;
