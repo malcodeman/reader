@@ -8,9 +8,9 @@
 
 All-in-One news reader. Inspired by [reader.one](http://reader.one/)
 
-## Table of Contents
-- [Usage](#usage)
-- [License](#license)
+- [Reader](#reader)
+  - [Usage](#usage)
+  - [License](#license)
 
 ## Usage
 
