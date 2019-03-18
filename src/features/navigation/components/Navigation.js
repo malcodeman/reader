@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 
-import { color } from "../../../state/styles/constants";
 import { requestPosts, changeSource } from "../../news/actions/actions_news";
 import { requestBestStories } from "../../news/actions/actions_hacker_news";
 
@@ -23,7 +22,7 @@ const Nav = styled.nav`
 `;
 
 const Link = styled.a`
-  color: ${color.secondary};
+  color: ${props => props.theme.secondary};
   cursor: pointer;
   padding: 1rem;
 `;

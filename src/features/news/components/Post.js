@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-import { color } from "../../../state/styles/constants";
-
 const Link = styled.a`
   text-decoration: none;
   display: block;
@@ -11,13 +9,12 @@ const Link = styled.a`
 
 const Title = styled.p`
   margin: 0;
-  color: ${color.primary};
+  color: ${props => props.theme.primary};
 `;
 
 const common = `
   font-size: 0.8rem;
   line-height: 1.4;
-  color: ${color.secondary};
   display: block;
   @media (min-width: 576px) {
     display: inline;
@@ -25,14 +22,17 @@ const common = `
 `;
 
 const Upvotes = styled.span`
+  color: ${props => props.theme.primary};
   ${common} margin-right: 0.4rem;
 `;
 
 const Author = styled.span`
+  color: ${props => props.theme.primary};
   ${common} margin-right: 0.4rem;
 `;
 
 const Comments = styled.span`
+  color: ${props => props.theme.primary};
   ${common};
 `;
 

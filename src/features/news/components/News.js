@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 
 import Post from "./Post";
 import Header from "./Header";
-import { color } from "../../../state/styles/constants";
 import { requestPosts } from "../actions/actions_news";
 
 const NewsArea = styled.main`
@@ -18,7 +17,7 @@ const NewsArea = styled.main`
 
 const Loading = styled.span`
   padding: 1rem;
-  color: ${color.secondary};
+  color: ${props => props.theme.secondary};
   display: block;
 `;
 
