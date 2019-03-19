@@ -10,7 +10,7 @@ import {
 
 const initialState = {
   source: "All in one",
-  loading: true,
+  loading: false,
   posts: []
 };
 
@@ -31,16 +31,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        posts: action.payload.map((post, index) => {
-          return {
-            id: action.payload[index].data.id,
-            url: action.payload[index].data.url,
-            title: action.payload[index].data.title,
-            upvotes: action.payload[index].data.score,
-            author: action.payload[index].data.author,
-            comments: action.payload[index].data.num_comments
-          };
-        })
+        posts: action.payload
       };
     case REQUEST_BEST_STORIES:
       return {
