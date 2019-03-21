@@ -2,8 +2,11 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 
-import { requestPosts, changeSource } from "../../news/actions/actions_news";
-import { requestBestStories } from "../../news/actions/actions_hacker_news";
+import {
+  requestPopularPosts,
+  changeSource,
+  requestBestStories
+} from "../../news/actions/actions_news";
 
 const Nav = styled.nav`
   grid-area: n;
@@ -33,7 +36,8 @@ export class Navigation extends Component {
       <Nav>
         <Link
           onClick={() =>
-            this.props.changeSource("reddit") && this.props.requestPosts()
+            this.props.changeSource("reddit") &&
+            this.props.requestPopularPosts()
           }
         >
           Reddit
@@ -54,7 +58,7 @@ export class Navigation extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     changeSource: link => dispatch(changeSource(link)),
-    requestPosts: () => dispatch(requestPosts()),
+    requestPopularPosts: () => dispatch(requestPopularPosts()),
     requestBestStories: () => dispatch(requestBestStories())
   };
 };

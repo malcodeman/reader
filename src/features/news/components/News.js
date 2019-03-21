@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import Post from "./Post";
 import Header from "./Header";
-import { requestPosts } from "../actions/actions_news";
+import { requestPopularPosts } from "../actions/actions_news";
 
 const NewsArea = styled.main`
   grid-area: m;
@@ -36,8 +36,9 @@ const ListItem = styled.li`
 
 class News extends Component {
   componentDidMount = () => {
-    this.props.requestPosts();
+    this.props.requestPopularPosts();
   };
+
   render() {
     return (
       <NewsArea>
@@ -74,7 +75,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    requestPosts: () => dispatch(requestPosts())
+    requestPopularPosts: () => dispatch(requestPopularPosts())
   };
 };
 

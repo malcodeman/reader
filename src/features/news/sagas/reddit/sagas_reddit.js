@@ -1,9 +1,9 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 
 import {
-  REQUEST_POSTS,
-  REQUEST_POSTS_FAILED,
-  RECIVE_POSTS
+  REQUEST_POPULAR_POSTS,
+  RECIVE_POSTS,
+  REQUEST_POSTS_FAILED
 } from "../../actions/actions_news";
 
 async function fetchPopularPostsApi() {
@@ -15,8 +15,8 @@ async function fetchPopularPostsApi() {
 
 function* fetchPopularPosts() {
   try {
-    const data = yield call(fetchPopularPostsApi);
-    const posts = data.map(post => {
+    const posts = yield call(fetchPopularPostsApi);
+    const postsFormatted = posts.map(post => {
       return {
         id: post.data.id,
         url: post.data.url,
@@ -27,12 +27,12 @@ function* fetchPopularPosts() {
       };
     });
 
-    yield put({ type: RECIVE_POSTS, payload: posts });
+    yield put({ type: RECIVE_POSTS, payload: postsFormatted });
   } catch (error) {
     yield put({ type: REQUEST_POSTS_FAILED, error });
   }
 }
 
 export function* watchfetchPopularPosts() {
-  yield takeLatest(REQUEST_POSTS, fetchPopularPosts);
+  yield takeLatest(REQUEST_POPULAR_POSTS, fetchPopularPosts);
 }

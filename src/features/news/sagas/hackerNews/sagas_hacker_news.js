@@ -2,9 +2,9 @@ import { call, put, takeLatest, all } from "redux-saga/effects";
 
 import {
   REQUEST_BEST_STORIES,
-  REQUEST_BEST_STORIES_FAILED,
-  RECIVE_BEST_STORIES
-} from "../../actions/actions_hacker_news";
+  RECIVE_POSTS,
+  REQUEST_POSTS_FAILED
+} from "../../actions/actions_news";
 
 async function fetchBestStoriesApi() {
   const stories = await fetch(
@@ -41,9 +41,9 @@ function* fetchBestStories() {
       };
     });
 
-    yield put({ type: RECIVE_BEST_STORIES, payload: storiesFormatted });
+    yield put({ type: RECIVE_POSTS, payload: storiesFormatted });
   } catch (error) {
-    yield put({ type: REQUEST_BEST_STORIES_FAILED, error });
+    yield put({ type: REQUEST_POSTS_FAILED, error });
   }
 }
 
