@@ -1,69 +1,27 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
-import { connect } from "react-redux";
+import { NavLink } from "react-router-dom";
 
-import {
-  requestPopularPosts,
-  changeSource,
-  requestBestStories
-} from "../../news/actions/actions_news";
-
-const Nav = styled.nav`
-  grid-area: n;
-  background-color: #fff;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  @media (min-width: 576px) {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #eee;
-    flex-wrap: no-wrap;
-  }
-`;
-
-const Link = styled.a`
+const StyledLink = styled(NavLink)`
   color: ${props => props.theme.secondary};
   cursor: pointer;
   padding: 1rem;
+  text-decoration: none;
+  &.active {
+    color: ${props => props.theme.primary};
+  }
 `;
 
-export class Navigation extends Component {
-  render() {
-    return (
-      <Nav>
-        <Link
-          onClick={() =>
-            this.props.changeSource("reddit") &&
-            this.props.requestPopularPosts()
-          }
-        >
-          Reddit
-        </Link>
-        <Link
-          onClick={() =>
-            this.props.changeSource("hacker news") &&
-            this.props.requestBestStories()
-          }
-        >
-          HN
-        </Link>
-      </Nav>
-    );
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    changeSource: link => dispatch(changeSource(link)),
-    requestPopularPosts: () => dispatch(requestPopularPosts()),
-    requestBestStories: () => dispatch(requestBestStories())
-  };
+export const Navigation = () => {
+  return (
+    <>
+      <StyledLink to="/" exact>
+        All in one
+      </StyledLink>
+      <StyledLink to="/reddit">Reddit</StyledLink>
+      <StyledLink to="/hn">HN</StyledLink>
+    </>
+  );
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(Navigation);
+export default Navigation;

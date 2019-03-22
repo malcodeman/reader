@@ -2,52 +2,43 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 
-import Post from "./Post";
-import Header from "./Header";
-import { requestPopularPosts } from "../actions/actions_news";
+import Header from "../components/Header";
+import Loading from "../components/Loading";
+import Post from "../components/Post";
+import { changeSource, requestPopularPosts } from "../actions/actions_news";
 
-const NewsArea = styled.main`
-  grid-area: m;
-  background-color: transparent;
-  @media (min-width: 576px) {
-    padding: 2rem;
-    overflow-y: scroll;
-  }
-`;
-
-const Loading = styled.span`
-  padding: 1rem;
-  color: ${props => props.theme.secondary};
-  display: block;
-`;
-
-const List = styled.ul`
+export const List = styled.ul`
   padding: 0;
   margin: 0;
   list-style: none;
 `;
 
-const ListItem = styled.li`
+export const ListItem = styled.li`
   padding: 1rem;
   :hover {
     background-color: #eee;
   }
 `;
 
-class News extends Component {
+class Home extends Component {
   componentDidMount = () => {
-    this.props.requestPopularPosts();
+    const { changeSource, requestPopularPosts } = this.props;
+
+    changeSource("All in one");
+    requestPopularPosts();
   };
 
   render() {
+    const { source, loading, posts } = this.props;
+
     return (
-      <NewsArea>
-        <Header title={this.props.source} />
-        {this.props.loading ? (
+      <>
+        <Header title={source} />
+        {loading ? (
           <Loading>Loading...</Loading>
         ) : (
           <List>
-            {this.props.posts.map(post => (
+            {posts.map(post => (
               <ListItem key={post.id}>
                 <Post
                   url={post.url}
@@ -60,7 +51,7 @@ class News extends Component {
             ))}
           </List>
         )}
-      </NewsArea>
+      </>
     );
   }
 }
@@ -75,6 +66,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    changeSource: source => dispatch(changeSource(source)),
     requestPopularPosts: () => dispatch(requestPopularPosts())
   };
 };
@@ -82,4 +74,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(News);
+)(Home);

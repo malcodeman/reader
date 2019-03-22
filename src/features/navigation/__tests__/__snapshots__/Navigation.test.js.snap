@@ -1,16 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Navigation snapshot 1`] = `
-<styled.nav>
-  <styled.a
-    onClick={[Function]}
+<Fragment>
+  <Styled(NavLink)
+    exact={true}
+    to="/"
+  >
+    All in one
+  </Styled(NavLink)>
+  <Styled(NavLink)
+    to="/reddit"
   >
     Reddit
-  </styled.a>
-  <styled.a
-    onClick={[Function]}
+  </Styled(NavLink)>
+  <Styled(NavLink)
+    to="/hn"
   >
     HN
-  </styled.a>
-</styled.nav>
+  </Styled(NavLink)>
+</Fragment>
 `;

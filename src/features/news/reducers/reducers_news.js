@@ -6,7 +6,7 @@ import {
 } from "../actions/actions_news";
 
 const initialState = {
-  source: "All in one",
+  source: "",
   loading: false,
   posts: []
 };
