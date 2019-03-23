@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
+import Footer from "./Footer";
+
 const StyledLink = styled(NavLink)`
   color: ${props => props.theme.secondary};
   cursor: pointer;
@@ -10,16 +12,20 @@ const StyledLink = styled(NavLink)`
   &.active {
     color: ${props => props.theme.primary};
   }
+  @media (min-width: 576px) {
+    margin-top: ${props => props.margintop || "initial"};
+  }
 `;
 
 export const Navigation = () => {
   return (
     <>
-      <StyledLink to="/" exact>
+      <StyledLink to="/" exact margintop="auto">
         All in one
       </StyledLink>
       <StyledLink to="/reddit">Reddit</StyledLink>
       <StyledLink to="/hn">HN</StyledLink>
+      <Footer />
     </>
   );
 };

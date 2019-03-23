@@ -8,8 +8,6 @@ import Post from "../components/Post";
 import { changeSource, requestAllPosts } from "../actions/actions_news";
 
 export const List = styled.ul`
-  padding: 0;
-  margin: 0;
   list-style: none;
 `;
 

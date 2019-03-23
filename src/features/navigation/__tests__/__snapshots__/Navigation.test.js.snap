@@ -4,6 +4,7 @@ exports[`Navigation snapshot 1`] = `
 <Fragment>
   <Styled(NavLink)
     exact={true}
+    margintop="auto"
     to="/"
   >
     All in one
@@ -18,5 +19,6 @@ exports[`Navigation snapshot 1`] = `
   >
     HN
   </Styled(NavLink)>
+  <Footer />
 </Fragment>
 `;

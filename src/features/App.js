@@ -15,6 +15,7 @@ const Grid = styled.section`
   display: grid;
   grid-template-columns: 1fr;
   @media (min-width: 576px) {
+    grid-gap: 2rem;
     grid-template-columns: 20% 1fr;
     height: 100vh;
   }
@@ -23,11 +24,11 @@ const Grid = styled.section`
 const Nav = styled.nav`
   background-color: #fff;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
   @media (min-width: 576px) {
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     background-color: #eee;
   }
 `;
@@ -35,7 +36,6 @@ const Nav = styled.nav`
 const Main = styled.main`
   background-color: transparent;
   @media (min-width: 576px) {
-    padding: 2rem;
     overflow-y: auto;
   }
 `;
