@@ -1,5 +1,6 @@
 import {
   CHANGE_SOURCE,
+  REQUEST_ALL_POSTS,
   REQUEST_POPULAR_POSTS,
   RECIVE_POSTS,
   REQUEST_BEST_STORIES
@@ -18,6 +19,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         source: action.payload
+      };
+    case REQUEST_ALL_POSTS:
+      return {
+        ...state,
+        loading: true
       };
     case REQUEST_POPULAR_POSTS:
       return {

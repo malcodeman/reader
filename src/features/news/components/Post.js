@@ -37,12 +37,16 @@ const Comments = styled.span`
 `;
 
 const Post = props => {
+  function formatNumber(number) {
+    return new Intl.NumberFormat().format(number);
+  }
+
   return (
     <Link href={props.url}>
       <Title>{props.title}</Title>
-      <Upvotes>{props.upvotes} ups</Upvotes>
+      <Upvotes>{formatNumber(props.upvotes)} ups</Upvotes>
       <Author>by {props.author}</Author>
-      <Comments>{props.comments} comments</Comments>
+      <Comments>{formatNumber(props.comments)} comments</Comments>
     </Link>
   );
 };

@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import Header from "../components/Header";
 import Loading from "../components/Loading";
 import Post from "../components/Post";
-import { changeSource, requestPopularPosts } from "../actions/actions_news";
+import { changeSource, requestAllPosts } from "../actions/actions_news";
 
 export const List = styled.ul`
   padding: 0;
@@ -22,10 +22,10 @@ export const ListItem = styled.li`
 
 class Home extends Component {
   componentDidMount = () => {
-    const { changeSource, requestPopularPosts } = this.props;
+    const { changeSource, requestAllPosts } = this.props;
 
     changeSource("All in one");
-    requestPopularPosts();
+    requestAllPosts();
   };
 
   render() {
@@ -67,7 +67,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     changeSource: source => dispatch(changeSource(source)),
-    requestPopularPosts: () => dispatch(requestPopularPosts())
+    requestAllPosts: () => dispatch(requestAllPosts())
   };
 };
 
