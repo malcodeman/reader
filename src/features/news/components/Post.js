@@ -3,12 +3,11 @@ import styled from "styled-components";
 
 const Link = styled.a`
   text-decoration: none;
-  display: block;
   cursor: pointer;
 `;
 
 const Title = styled.p`
-  margin: 0;
+  margin-bottom: 6px;
   color: ${props => props.theme.primary};
 `;
 
@@ -23,12 +22,18 @@ const common = `
 
 const Upvotes = styled.span`
   color: ${props => props.theme.primary};
-  ${common} margin-right: 0.4rem;
+  @media (min-width: 576px) {
+    margin-right: 6px;
+  }
+  ${common}
 `;
 
 const Author = styled.span`
   color: ${props => props.theme.primary};
-  ${common} margin-right: 0.4rem;
+  @media (min-width: 576px) {
+    margin-right: 6px;
+  }
+  ${common}
 `;
 
 const Comments = styled.span`

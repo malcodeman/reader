@@ -13,36 +13,30 @@ import HackerNews from "./news/containers/HackerNews";
 
 const Grid = styled.section`
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-areas: "n n n n n n n n n n n n" "m m m m m m m m m m m m";
+  grid-template-columns: 1fr;
   @media (min-width: 576px) {
-    grid-template-areas: "n n m m m m m m m m m m";
+    grid-template-columns: 20% 1fr;
     height: 100vh;
   }
 `;
 
 const Nav = styled.nav`
-  grid-area: n;
   background-color: #fff;
   display: flex;
   justify-content: space-around;
-  flex-wrap: wrap;
   @media (min-width: 576px) {
-    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #eee;
-    flex-wrap: no-wrap;
   }
 `;
 
 const Main = styled.main`
-  grid-area: m;
   background-color: transparent;
   @media (min-width: 576px) {
     padding: 2rem;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 `;
 

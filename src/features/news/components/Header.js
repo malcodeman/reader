@@ -1,21 +1,23 @@
 import React from "react";
 import styled from "styled-components";
 
-const Title = styled.h1`
-  padding: 1rem;
-  margin: 0;
-  color: ${props => props.theme.primary};
+const StyledHeader = styled.header`
   display: none;
-  text-transform: capitalize;
   @media (min-width: 576px) {
     display: block;
+    padding: 1rem;
   }
 `;
 
+const Title = styled.h1`
+  color: ${props => props.theme.primary};
+  text-transform: capitalize;
+`;
+
 const Header = props => (
-  <header>
+  <StyledHeader>
     <Title>{props.title}</Title>
-  </header>
+  </StyledHeader>
 );
 
 export default Header;
