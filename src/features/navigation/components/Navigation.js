@@ -17,7 +17,7 @@ const StyledLink = styled(NavLink)`
   }
 `;
 
-export const Navigation = () => {
+const Navigation = () => {
   return (
     <>
       <StyledLink to="/" exact margintop="auto">
