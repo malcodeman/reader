@@ -4,7 +4,9 @@
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/malcodeman/reader/blob/master/LICENSE)
 
-All-in-One news reader. Inspired by [reader.one](http://reader.one/)
+All-in-One news reader. Inspired by [reader.one](http://reader.one)
+
+![Screenshot](docs/images/screenshot.png)
 
 - [Reader](#reader)
   - [Usage](#usage)
