@@ -31,6 +31,7 @@ export function formatStories(stories) {
       upvotes: story.score,
       author: story.by,
       comments: story.descendants,
+      created_at: new Date(story.time * 1000),
       source: "hacker news"
     };
   });

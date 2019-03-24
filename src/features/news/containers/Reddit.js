@@ -32,6 +32,7 @@ class Reddit extends React.Component {
                   upvotes={post.upvotes}
                   author={post.author}
                   comments={post.comments}
+                  created_at={post.created_at}
                 />
               </ListItem>
             ))}

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { distanceInWordsToNow } from "date-fns";
 
 const Link = styled.a`
   text-decoration: none;
@@ -7,7 +8,7 @@ const Link = styled.a`
 `;
 
 const Title = styled.p`
-  margin-bottom: 6px;
+  padding-bottom: 6px;
   color: ${props => props.theme.primary};
 `;
 
@@ -47,6 +48,14 @@ const Author = styled.span`
 
 const Comments = styled.span`
   color: ${props => props.theme.primary};
+  @media (min-width: 576px) {
+    margin-right: 6px;
+  }
+  ${common};
+`;
+
+const When = styled.span`
+  color: ${props => props.theme.primary};
   ${common};
 `;
 
@@ -57,11 +66,18 @@ const Post = props => {
 
   return (
     <Link href={props.url}>
-      <Title>{props.title}</Title>
+      {props.title ? <Title>{props.title}</Title> : null}
       {props.source ? <Source>{props.source}</Source> : null}
-      <Upvotes>{formatNumber(props.upvotes)} ups</Upvotes>
-      <Author>by {props.author}</Author>
-      <Comments>{formatNumber(props.comments)} comments</Comments>
+      {props.upvotes ? (
+        <Upvotes>{formatNumber(props.upvotes)} ups</Upvotes>
+      ) : null}
+      {props.author ? <Author>by {props.author}</Author> : null}
+      {props.comments ? (
+        <Comments>{formatNumber(props.comments)} comments</Comments>
+      ) : null}
+      {props.created_at ? (
+        <When>{distanceInWordsToNow(props.created_at)} ago</When>
+      ) : null}
     </Link>
   );
 };

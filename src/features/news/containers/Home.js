@@ -44,6 +44,7 @@ class Home extends Component {
                   upvotes={post.upvotes}
                   author={post.author}
                   comments={post.comments}
+                  created_at={post.created_at}
                   source={post.source}
                 />
               </ListItem>

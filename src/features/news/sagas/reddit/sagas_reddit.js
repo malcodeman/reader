@@ -22,6 +22,7 @@ export function formatPosts(posts) {
       upvotes: post.data.score,
       author: post.data.author,
       comments: post.data.num_comments,
+      created_at: new Date(post.data.created_utc * 1000),
       source: "reddit"
     };
   });
