@@ -15,8 +15,8 @@ All-in-One news reader. Inspired by [reader.one](http://reader.one/)
 ## Usage
 
 ```
-npm install
-npm start
+yarn install
+yarn start
 ```
 
 ## License
