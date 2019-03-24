@@ -2,6 +2,7 @@
   "name": "reader",
   "version": "0.1.0",
   "private": true,
+  "domain": "topstories.surge.sh",
   "dependencies": {
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
@@ -16,7 +17,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "yarn build && surge build $npm_package_domain"
   },
   "devDependencies": {
     "enzyme": "^3.9.0",
