@@ -21,7 +21,8 @@ export function formatPosts(posts) {
       title: post.data.title,
       upvotes: post.data.score,
       author: post.data.author,
-      comments: post.data.num_comments
+      comments: post.data.num_comments,
+      source: "reddit"
     };
   });
 }

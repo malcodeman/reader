@@ -30,7 +30,8 @@ export function formatStories(stories) {
       title: story.title,
       upvotes: story.score,
       author: story.by,
-      comments: story.descendants
+      comments: story.descendants,
+      source: "hacker news"
     };
   });
 }

@@ -20,6 +20,15 @@ const common = `
   }
 `;
 
+const Source = styled.span`
+  color: ${props => props.theme.primary};
+  text-transform: capitalize;
+  @media (min-width: 576px) {
+    margin-right: 6px;
+  }
+  ${common}
+`;
+
 const Upvotes = styled.span`
   color: ${props => props.theme.primary};
   @media (min-width: 576px) {
@@ -49,6 +58,7 @@ const Post = props => {
   return (
     <Link href={props.url}>
       <Title>{props.title}</Title>
+      {props.source ? <Source>{props.source}</Source> : null}
       <Upvotes>{formatNumber(props.upvotes)} ups</Upvotes>
       <Author>by {props.author}</Author>
       <Comments>{formatNumber(props.comments)} comments</Comments>

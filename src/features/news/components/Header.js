@@ -6,6 +6,7 @@ const StyledHeader = styled.header`
   @media (min-width: 576px) {
     display: block;
     padding: 1rem;
+    margin-top: 1rem;
   }
 `;
 
