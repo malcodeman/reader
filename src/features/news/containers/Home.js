@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import Header from "../components/Header";
 import Loading from "../components/Loading";
@@ -18,60 +18,40 @@ export const ListItem = styled.li`
   }
 `;
 
-class Home extends Component {
-  componentDidMount = () => {
-    const { changeSource, requestAllPosts } = this.props;
+function Home() {
+  const source = useSelector(state => state.news.source);
+  const loading = useSelector(state => state.news.loading);
+  const posts = useSelector(state => state.news.posts);
+  const dispatch = useDispatch();
 
-    changeSource("All in one");
-    requestAllPosts();
-  };
+  React.useEffect(() => {
+    dispatch(changeSource("All in one"));
+    dispatch(requestAllPosts());
+  }, [dispatch]);
 
-  render() {
-    const { source, loading, posts } = this.props;
-
-    return (
-      <>
-        <Header title={source} />
-        {loading ? (
-          <Loading>Loading...</Loading>
-        ) : (
-          <List>
-            {posts.map(post => (
-              <ListItem key={post.id}>
-                <Post
-                  url={post.url}
-                  title={post.title}
-                  upvotes={post.upvotes}
-                  author={post.author}
-                  comments={post.comments}
-                  created_at={post.created_at}
-                  source={post.source}
-                />
-              </ListItem>
-            ))}
-          </List>
-        )}
-      </>
-    );
-  }
+  return (
+    <>
+      <Header title={source} />
+      {loading && <Loading>Loading...</Loading>}
+      {!loading && posts && (
+        <List>
+          {posts.map(post => (
+            <ListItem key={post.id}>
+              <Post
+                url={post.url}
+                title={post.title}
+                upvotes={post.upvotes}
+                author={post.author}
+                comments={post.comments}
+                created_at={post.created_at}
+                source={post.source}
+              />
+            </ListItem>
+          ))}
+        </List>
+      )}
+    </>
+  );
 }
 
-const mapStateToProps = state => {
-  return {
-    source: state.news.source,
-    loading: state.news.loading,
-    posts: state.news.posts
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    changeSource: source => dispatch(changeSource(source)),
-    requestAllPosts: () => dispatch(requestAllPosts())
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Home);
+export default Home;

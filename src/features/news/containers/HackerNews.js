@@ -7,7 +7,7 @@ import Post from "../components/Post";
 import { List, ListItem } from "./Home";
 import { changeSource, requestBestStories } from "../actions/actions_news";
 
-function HackerNews(props) {
+function HackerNews() {
   const source = useSelector(state => state.news.source);
   const loading = useSelector(state => state.news.loading);
   const posts = useSelector(state => state.news.posts);
