@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { distanceInWordsToNow } from "date-fns";
+import { formatDistanceToNow } from "date-fns";
 
 const Link = styled.a`
   text-decoration: none;
@@ -76,7 +76,7 @@ const Post = props => {
         <Comments>{formatNumber(props.comments)} comments</Comments>
       ) : null}
       {props.created_at ? (
-        <When>{distanceInWordsToNow(props.created_at)} ago</When>
+        <When>{formatDistanceToNow(props.created_at)} ago</When>
       ) : null}
     </Link>
   );
