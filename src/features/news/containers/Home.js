@@ -14,7 +14,7 @@ export const List = styled.ul`
 export const ListItem = styled.li`
   padding: 1rem;
   :hover {
-    background-color: #eee;
+    background-color: ${props => props.theme.backgroundPrimary};
   }
 `;
 

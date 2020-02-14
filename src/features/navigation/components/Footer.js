@@ -9,7 +9,7 @@ const StyledFooter = styled.footer`
 `;
 
 const Link = styled.a`
-  color: #337ab7;
+  color: ${props => props.theme.accent};
 `;
 
 const RepoLink = styled.span`
