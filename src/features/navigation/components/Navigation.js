@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
+import ThemeSelect from "./ThemeSelect";
 import Footer from "./Footer";
 
 const StyledLink = styled(NavLink)`
@@ -20,6 +21,7 @@ const StyledLink = styled(NavLink)`
 const Navigation = () => {
   return (
     <>
+      <ThemeSelect />
       <StyledLink to="/" exact margintop="auto">
         All in one
       </StyledLink>

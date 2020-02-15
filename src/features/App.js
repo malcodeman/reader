@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import { Provider } from "react-redux";
+import { useSelector } from "react-redux";
 import { ThemeProvider } from "styled-components";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import store from "../state/store";
-import theme from "../styles/darkTheme";
+import darkTheme from "../styles/darkTheme";
+import lightTheme from "../styles/lightTheme";
 import Navigation from "./navigation/components/Navigation";
 import Home from "./news/containers/Home";
 import Reddit from "./news/containers/Reddit";
@@ -40,23 +40,24 @@ const Main = styled.main`
 `;
 
 const App = () => {
+  const darkMode = useSelector(state => state.settings.darkMode);
+  const theme = darkMode ? darkTheme : lightTheme;
+
   return (
-    <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <Router>
-          <Grid>
-            <Nav>
-              <Navigation />
-            </Nav>
-            <Main>
-              <Route path="/" exact component={Home} />
-              <Route path="/reddit" exact component={Reddit} />
-              <Route path="/hn" exact component={HackerNews} />
-            </Main>
-          </Grid>
-        </Router>
-      </ThemeProvider>
-    </Provider>
+    <ThemeProvider theme={theme}>
+      <Router>
+        <Grid>
+          <Nav>
+            <Navigation />
+          </Nav>
+          <Main>
+            <Route path="/" exact component={Home} />
+            <Route path="/reddit" exact component={Reddit} />
+            <Route path="/hn" exact component={HackerNews} />
+          </Main>
+        </Grid>
+      </Router>
+    </ThemeProvider>
   );
 };
 
