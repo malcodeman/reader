@@ -1,4 +1,4 @@
-# [Reader](http://topstories.surge.sh)
+# [Reader](http://topstories.surge.sh) 📰
 
 [![style: styled-components](https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e)](https://github.com/styled-components/styled-components)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
@@ -7,10 +7,6 @@
 All-in-One news reader. Inspired by [reader.one](http://reader.one)
 
 ![Screenshot](docs/images/screenshot.png)
-
-- [Reader](#reader)
-  - [Usage](#usage)
-  - [License](#license)
 
 ## Usage
 
