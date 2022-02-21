@@ -2,7 +2,6 @@
   "name": "reader",
   "version": "0.1.0",
   "private": true,
-  "domain": "topstories.surge.sh",
   "dependencies": {
     "date-fns": "^2.9.0",
     "react": "^16.12.0",
@@ -18,8 +17,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "deploy": "yarn build && surge build $npm_package_domain"
+    "eject": "react-scripts eject"
   },
   "browserslist": [
     ">0.2%",
